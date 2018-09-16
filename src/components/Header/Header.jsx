@@ -9,6 +9,18 @@ import SearchBar from "components/SearchBar/SearchBar.jsx";
 import Avatar from '@material-ui/core/Avatar';
 import image from "assets/images/avatar.jpg";
 import CustomDropdown from 'components/CustomDropdown/CustomDropdown.jsx'
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+
+import {
+  grayColor,
+  roseColor,
+  primaryColor,
+  infoColor,
+  successColor,
+  warningColor,
+  dangerColor
+} from "assets/jss/eos-wallet-react.jsx";
 
 function TabContainer(props) {
     return (
@@ -24,10 +36,11 @@ function TabContainer(props) {
 const styles = {
   root: {
     flexGrow: 1,
+    backgroundColor: grayColor,
   },
   tile: {
     flexGrow: 1,
-    padding: 8 * 2,
+    //padding: 8 * 2,
   },
   search:{
     //flexGrow: 1,
@@ -39,7 +52,13 @@ const styles = {
   },
   avatar: {
     margin: 0,
-  }
+  },
+  appBar:{
+    },
+    tabBar:{
+      padding:'16px'
+    }
+
 
 };
 
@@ -63,29 +82,47 @@ class Header extends React.Component {
   };
 
   render() {
-    const { classes } = this.props;
     const { value } = this.state;
     const { anchorEl } = this.state;
     const open = Boolean(anchorEl);
+    const {
+      classes,  
+      accountInfoTab,
+      newAccountTab,
+      transferTokenTab,
+      contractTab,
+    } = this.props;
 
     return (
       <div className={classes.root}>
-        <AppBar position="static">
+        <AppBar position="static" className={classes.appBar}>
         
           <Toolbar>
           <Avatar alt="Remy Sharp" src={image} className={classes.avatar} />
             <Typography variant="display1" color="inherit" component="div" className={classes.tile}>
               EOSGUI
             </Typography>
+            <Tabs
+            value={value}
+            onChange={this.handleChange}
+            className={classes.tabBar}
+            indicatorColor="secondary"
+            textColor="inherit"
+            wrapper
+          >
+            <Tab label="New Account" />
+            <Tab label="Account Info"  />
+            <Tab label="Transfet Token"  />
+            <Tab label="Contract"  />
 
-            <SearchBar className={classes.search} 
-              placeholder= {'Search By Account'}
-            />
-            <CustomDropdown/>
+          </Tabs>
 
           </Toolbar>
         </AppBar>
-           
+        {value === 0 && <TabContainer><div className={classes.appResponsive}>{newAccountTab}</div></TabContainer>}
+        {value === 1 && <TabContainer><div className={classes.appResponsive}>{accountInfoTab}</div></TabContainer>}
+        {value === 2 && <TabContainer><div className={classes.appResponsive}>{transferTokenTab}</div></TabContainer>}
+        {value === 3 && <TabContainer><div className={classes.appResponsive}>{contractTab}</div></TabContainer>}           
       </div>
     );
   }
@@ -93,6 +130,13 @@ class Header extends React.Component {
 
 Header.propTypes = {
   classes: PropTypes.object.isRequired,
+};
+Header.propTypes = {
+  classes: PropTypes.object.isRequired,
+  accountInfoTab: PropTypes.node,
+  newAccountTab: PropTypes.node,
+  transferTokenTab: PropTypes.node,
+  contractTab: PropTypes.node,
 };
 
 export default withStyles(styles)(Header);

@@ -8,7 +8,7 @@ import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'react-router-redux';
 import createHistory from 'history/createBrowserHistory';
 
-import App from './containers/App/App'
+import App from 'App'
 
 import configureStore from './configureStore';
 
