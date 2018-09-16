@@ -45,7 +45,6 @@ import SectionActiveAccount from  'views/ViewNewAccount/Sections/SectionActiveAc
 const styles = theme => ({
   root: {
     flexGrow: 1,
-    padding: '10px 100px',
   },
   paper: {
     padding: '20px 20px',

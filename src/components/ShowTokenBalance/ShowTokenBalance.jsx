@@ -17,9 +17,10 @@ const styles = {
 
 const ShowTokenBalace = props => {
     const { tokenBalance } = props;
-
+    if(tokenBalance != null) 
     return (
-        <div>
+        
+     <div>
 
             <Typography variant="headline">
                 <b>Token Balances</b>

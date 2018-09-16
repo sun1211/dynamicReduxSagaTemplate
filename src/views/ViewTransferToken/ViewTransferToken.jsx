@@ -43,7 +43,6 @@ import TokenCard from 'components/TokenCard/TokenCard.jsx';
 const styles = theme => ({
   root: {
     flexGrow: 1,
-    padding: '10px 100px',
   },
   paper: {
     padding: '20px 20px',

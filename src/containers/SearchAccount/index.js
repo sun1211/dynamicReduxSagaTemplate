@@ -37,7 +37,7 @@ const mapStateToProps = createStructuredSelector({
 function mapDispatchToProps(dispatch) {
   return {
     //handleAccountName: form => dispatch(lookupAccount(form)),
-     handleAccountName: form => dispatch(lookupAccount("zbeosbp11111")),
+     handleAccountName: form => dispatch(lookupAccount("eosbetdice11")),
     // handlePublicKey: form => dispatch(lookupPubkey(form.publicKey)),
 
   };

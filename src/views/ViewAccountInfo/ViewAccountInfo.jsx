@@ -8,37 +8,25 @@ import RadioGroup from '@material-ui/core/RadioGroup';
 import Radio from '@material-ui/core/Radio';
 import Paper from '@material-ui/core/Paper';
 
-import SearchAccountBar from '../../components/SearchAccountBar'
-import ShowAccountInforForm from "../../components/ShowAccountInfoForm/ShowAccountInforForm"
-import ShowTokeBalance from "../../components/ShowTokenBalance/ShowTokenBalance"
-import ShowHistory from '../../components/showHistory'
+import SearchAccountBar from 'views/ViewAccountInfo/Sections/SearchAccountBar'
+import ShowAccountInforForm from "views/ViewAccountInfo/Sections/ShowAccountInforForm"
+import ShowTokeBalance from "views/ViewAccountInfo/Sections/ShowTokenBalance"
 import CircularProgress from '@material-ui/core/CircularProgress';
-import ShowAccountHistory from '../../components/ShowAccountHistory/ShowAccountHistory';
+import ShowAccountHistory from 'views/ViewAccountInfo/Sections/ShowAccountHistory.jsx';
 
 
 const styles = theme => ({
   root: {
     flexGrow: 1,
   },
-  paper: {
-    height: 350,
-    width: 600,
-  },
-  history: {
-    padding: '50px',
-    margin: ' 20px auto',
-    maxWidth: '80%',
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-  },
-  control: {
-    padding: theme.spacing.unit * 2,
+  searchDisplay:{
+    marginTop: '15%',
   },
 });
 
 function LoadingSpinner(props) {
   if (props.loading) {
-    return <CircularProgress color="secondary" />;
+    return <CircularProgress color="primary" style={{marginLeft: '45%'}}/>;
   }
   return '';
 }
@@ -46,6 +34,7 @@ function LoadingSpinner(props) {
 class ViewAccountInfo extends React.Component {
   state = {
     spacing: '16',
+    firstSearch: true,
   };
 
   handleChange = key => (event, value) => {
@@ -64,24 +53,32 @@ class ViewAccountInfo extends React.Component {
       contractTab,
     } = this.props;
     return (
-      <Grid container direction="row" justify="center" alignItems="center">
+    //   <Grid container direction="row" spacing={16} justify="center">
 
-        <Grid xs={12}>
-          <SearchAccountBar{...this.props} />
+    //   <Grid item xs={12}>
+    //     <SearchAccountBar {...this.props} />
+    //   </Grid>
+    // </Grid>
+
+      <Grid container direction="row" spacing={16} justify="center">
+
+        <Grid item xs={12} className={this.state.firstSearch ?classes.searchDisplay: '' } >
+        {this.state.firstSearch = false}
+          <SearchAccountBar {...this.props} />
         </Grid>
 
-        <Grid xs={12}>
+        <Grid item xs={12} justify="center">
           <LoadingSpinner {...this.props} />
         </Grid>
 
-        <Grid xs={6}>
+        <Grid item xs={7}>
           {this.props.accounts.map(account => {
             if (account)
               return <ShowAccountInforForm account={account} />
           })}
         </Grid>
         
-        <Grid xs={6}>
+        <Grid item xs={5}>
             {
               this.props.tokenBalances.map(tokenData => {
                 if (tokenData)
@@ -89,7 +86,7 @@ class ViewAccountInfo extends React.Component {
               })}
           </Grid>
 
-        <Grid xs={12}>
+        <Grid item xs={12}>
           {this.props.historys.map(history => {
             if (history)
               return <ShowAccountHistory history={history} />

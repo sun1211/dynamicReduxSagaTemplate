@@ -31,7 +31,7 @@ const styles = {
   },
   tile: {
     flexGrow: 1,
-    //padding: 8 * 2,
+    padding: 4 * 2,
   },
   search: {
     //flexGrow: 1,
@@ -53,6 +53,10 @@ const styles = {
     lineHeight: '50px',
     fontSize:'15px',
     fontWeight: 'bold',
+  },
+  tabContainer:{
+    padding: '0px 10%',
+    minHeight: 'calc(100vh - 200px)',
   }
 
 };
@@ -94,7 +98,7 @@ class Header extends React.Component {
 
           <Toolbar className={classes.toolBar}>
             <Avatar alt="Remy Sharp" src={WalletLogo} className={classes.avatar} />
-            <Typography variant="display1" color="inherit" component="div" className={classes.tile}>
+            <Typography variant="display1" color="inherit" className={classes.tile}>
               EOSGUI
             </Typography>
             <Tabs
@@ -114,10 +118,10 @@ class Header extends React.Component {
 
           </Toolbar>
         </AppBar>
-        {value === 0 && <TabContainer><div className={classes.appResponsive}>{accountInfoTab}</div></TabContainer>}
-        {value === 1 && <TabContainer><div className={classes.appResponsive}>{newAccountTab}</div></TabContainer>}
-        {value === 2 && <TabContainer><div className={classes.appResponsive}>{transferTokenTab}</div></TabContainer>}
-        {value === 3 && <TabContainer><div className={classes.appResponsive}>{contractTab}</div></TabContainer>}
+        {value === 0 && <TabContainer><div className={classes.tabContainer}>{accountInfoTab}</div></TabContainer>}
+        {value === 1 && <TabContainer><div className={classes.tabContainer}>{newAccountTab}</div></TabContainer>}
+        {value === 2 && <TabContainer><div className={classes.tabContainer}>{transferTokenTab}</div></TabContainer>}
+        {value === 3 && <TabContainer><div className={classes.tabContainer}>{contractTab}</div></TabContainer>}
       </div>
     );
   }

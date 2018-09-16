@@ -36,6 +36,7 @@ class ShowAccountInforForm extends React.Component {
             });
     };
     render() {
+        if(this.props.account != null)  
         return (
             <div>
                 <Grid xs={12} direction="column" justify="space-evenly" alignItems="flex-start">

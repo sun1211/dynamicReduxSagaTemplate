@@ -27,7 +27,15 @@ const theme = createMuiTheme({
     gray: { main: '#999999' },
     white: { main: '#ffffff' },
   },
-  shadows: ["none"]
+  shadows: ["none"],
+  typography: {
+    // Use the system font instead of the default Roboto font.
+    fontFamily: [
+      'Roboto',
+      'sans-serif',
+    ].join(','),
+  },
+    
 });
 
 export default function App() {

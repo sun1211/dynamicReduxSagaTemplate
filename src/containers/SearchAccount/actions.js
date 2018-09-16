@@ -4,7 +4,7 @@
  *
  */
 
-import { DEFAULT_ACTION, LOOKUP_ACCOUNT, LOOKUP_PUBKEY, LOOKUP_LOADING, LOOKUP_LOADED } from './constants';
+import { DEFAULT_ACTION, LOOKUP_ACCOUNT, LOOKUP_PUBKEY, LOOKUP_LOADING, LOOKUP_LOADED , LOOKUP_LOADED_ACCOUNT, LOOKUP_LOADED_TOKEN, LOOKUP_LOADED_HISTORY} from './constants';
 
 export function lookupAccount(name) {
   return {
@@ -32,6 +32,25 @@ export function lookupLoaded(accounts, historys, tokenBalances) {
     accounts,
     historys,
     tokenBalances,
+  };
+}
+
+export function lookupLoadedAccount(accounts) {
+  return {
+    type: LOOKUP_LOADED_ACCOUNT,
+    accounts,
+  };
+}
+export function lookupLoadedToken(tokenBalances) {
+  return {
+    type: LOOKUP_LOADED_TOKEN,
+    tokenBalances,
+  };
+}
+export function lookupLoadedHistory(historys) {
+  return {
+    type: LOOKUP_LOADED_HISTORY,
+    historys,
   };
 }
 
