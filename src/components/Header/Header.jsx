@@ -7,42 +7,33 @@ import Typography from '@material-ui/core/Typography';
 
 import SearchBar from "components/SearchBar/SearchBar.jsx";
 import Avatar from '@material-ui/core/Avatar';
-import image from "assets/images/avatar.jpg";
+import WalletLogo from "assets/images/wallet-logo.png";
 import CustomDropdown from 'components/CustomDropdown/CustomDropdown.jsx'
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 
-import {
-  grayColor,
-  roseColor,
-  primaryColor,
-  infoColor,
-  successColor,
-  warningColor,
-  dangerColor
-} from "assets/jss/eos-wallet-react.jsx";
 
 function TabContainer(props) {
-    return (
-      <Typography component="div" style={{ padding: 8 * 3 }}>
-        {props.children}
-      </Typography>
-    );
-  }
- 
-  TabContainer.propTypes = {
-    children: PropTypes.node.isRequired,
-  };
+  return (
+    <Typography component="div" style={{ padding: 8 * 3 }}>
+      {props.children}
+    </Typography>
+  );
+}
+
+TabContainer.propTypes = {
+  children: PropTypes.node.isRequired,
+};
 const styles = {
   root: {
     flexGrow: 1,
-    backgroundColor: grayColor,
+    backgroundColor: 'rgb(241, 242, 250)',
   },
   tile: {
     flexGrow: 1,
     //padding: 8 * 2,
   },
-  search:{
+  search: {
     //flexGrow: 1,
     border: 20,
   },
@@ -53,12 +44,16 @@ const styles = {
   avatar: {
     margin: 0,
   },
-  appBar:{
-    },
-    tabBar:{
-      padding:'16px'
-    }
+  toolBar: {
+    padding: '0px 10%',
+    minHeight:'0px',
 
+  },
+  tabLabel:{
+    lineHeight: '50px',
+    fontSize:'15px',
+    fontWeight: 'bold',
+  }
 
 };
 
@@ -71,7 +66,7 @@ class Header extends React.Component {
 
   handleChange = (event, value) => {
     this.setState({ value });
-    };
+  };
 
   handleMenu = event => {
     this.setState({ anchorEl: event.currentTarget });
@@ -86,7 +81,7 @@ class Header extends React.Component {
     const { anchorEl } = this.state;
     const open = Boolean(anchorEl);
     const {
-      classes,  
+      classes,
       accountInfoTab,
       newAccountTab,
       transferTokenTab,
@@ -95,34 +90,34 @@ class Header extends React.Component {
 
     return (
       <div className={classes.root}>
-        <AppBar position="static" className={classes.appBar}>
-        
-          <Toolbar>
-          <Avatar alt="Remy Sharp" src={image} className={classes.avatar} />
+        <AppBar position="static" color="white" className={classes.appBar}>
+
+          <Toolbar className={classes.toolBar}>
+            <Avatar alt="Remy Sharp" src={WalletLogo} className={classes.avatar} />
             <Typography variant="display1" color="inherit" component="div" className={classes.tile}>
               EOSGUI
             </Typography>
             <Tabs
-            value={value}
-            onChange={this.handleChange}
-            className={classes.tabBar}
-            indicatorColor="secondary"
-            textColor="inherit"
-            wrapper
-          >
-            <Tab label="New Account" />
-            <Tab label="Account Info"  />
-            <Tab label="Transfet Token"  />
-            <Tab label="Contract"  />
+              value={value}
+              onChange={this.handleChange}
+              className={classes.tabBar}
+              indicatorColor="primary"
+              textColor="inherit"
+              wrapper
+            >
+              <Tab label={<span className={classes.tabLabel}>Account Balance</span>}/>
+              <Tab label={<span className={classes.tabLabel}>New Account</span>}/>
+              <Tab label={<span className={classes.tabLabel}>Transfer</span>}/>
+              <Tab label={<span className={classes.tabLabel}>Contract</span>}/>
 
-          </Tabs>
+            </Tabs>
 
           </Toolbar>
         </AppBar>
-        {value === 0 && <TabContainer><div className={classes.appResponsive}>{newAccountTab}</div></TabContainer>}
-        {value === 1 && <TabContainer><div className={classes.appResponsive}>{accountInfoTab}</div></TabContainer>}
+        {value === 0 && <TabContainer><div className={classes.appResponsive}>{accountInfoTab}</div></TabContainer>}
+        {value === 1 && <TabContainer><div className={classes.appResponsive}>{newAccountTab}</div></TabContainer>}
         {value === 2 && <TabContainer><div className={classes.appResponsive}>{transferTokenTab}</div></TabContainer>}
-        {value === 3 && <TabContainer><div className={classes.appResponsive}>{contractTab}</div></TabContainer>}           
+        {value === 3 && <TabContainer><div className={classes.appResponsive}>{contractTab}</div></TabContainer>}
       </div>
     );
   }

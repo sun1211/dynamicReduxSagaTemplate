@@ -5,7 +5,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import { Divider } from '@material-ui/core';
-import image from "../../assets/images/avatar.jpg";
+import image from "assets/images/wallet-logo.png";
 
 //style using in Footer
 

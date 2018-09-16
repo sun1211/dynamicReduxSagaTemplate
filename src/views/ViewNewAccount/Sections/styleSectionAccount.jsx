@@ -1,4 +1,3 @@
-import { container } from "assets/jss/eos-wallet-react.jsx";
 
 const signupPageStyle = theme => ( {
   root: {
