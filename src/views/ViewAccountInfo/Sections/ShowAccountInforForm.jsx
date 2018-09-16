@@ -65,6 +65,7 @@ class ShowAccountInforForm extends React.Component {
                             color: 'inherit',
                         }}
                     />
+                    <Divider/>
                     <CardContent>
 
                         <div>

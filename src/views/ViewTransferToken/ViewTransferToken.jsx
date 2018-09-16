@@ -39,6 +39,8 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import classnames from 'classnames';
 import TokenCard from 'components/TokenCard/TokenCard.jsx';
+import Divider from "@material-ui/core/Divider"
+
 
 const styles = theme => ({
   root: {
@@ -71,8 +73,7 @@ const styles = theme => ({
     margin: '5px auto',
     borderRadius: 4,
     backgroundColor: theme.palette.common.white,
-    border: '1px solid #e0b4b4',
-    color: '#9f3a38',
+    border: '1px solid #7190eb',
     fontSize: 18,
     lineHeight: "1.21428571em",
     padding: '7px 15px',
@@ -89,9 +90,6 @@ const styles = theme => ({
   },
   button:{
     marginLeft:'auto',
-  },
-  cardHeader:{
-    borderBottom:'1px solid hsla(0,0%,74%,.2)',
   },
   firstCard:{
     padding: '10px'
@@ -126,7 +124,7 @@ class ViewTransferToken extends React.Component {
         <Grid item xs={12}>
           <Grid container className={classes.demo} justify="center" spacing={Number(spacing)}>
 
-          <Grid item xs={8} spacing={20} className={classes.firstCard}>
+          <Grid item xs={7} spacing={20} className={classes.firstCard}>
             <Card className={classes.card}>
               <CardHeader
                className={classes.cardHeader}
@@ -139,6 +137,7 @@ class ViewTransferToken extends React.Component {
                   color: 'inherit',
                 }}
               />
+              <Divider/>
               <CardContent>
                 <div className={classes.buttonholder}>
                   <Typography className={classes.title} variant="subheading" color="primary">Send To</Typography>
@@ -205,7 +204,7 @@ class ViewTransferToken extends React.Component {
             </Card>
           </Grid>
 
-            <Grid key={1} item xs={4} className={classes.firstCard}>
+            <Grid key={1} item xs={5} className={classes.firstCard}>
             <Card className={classes.card}>
               <CardHeader
                className={classes.cardHeader}
@@ -218,6 +217,7 @@ class ViewTransferToken extends React.Component {
                   color: 'inherit',
                 }}
               />
+              <Divider/>
               <CardContent>
                 <TokenCard/>
               </CardContent>

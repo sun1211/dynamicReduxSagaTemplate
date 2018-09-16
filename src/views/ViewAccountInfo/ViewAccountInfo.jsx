@@ -53,12 +53,6 @@ class ViewAccountInfo extends React.Component {
       contractTab,
     } = this.props;
     return (
-    //   <Grid container direction="row" spacing={16} justify="center">
-
-    //   <Grid item xs={12}>
-    //     <SearchAccountBar {...this.props} />
-    //   </Grid>
-    // </Grid>
 
       <Grid container direction="row" spacing={16} justify="center">
 
