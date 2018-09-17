@@ -24,6 +24,7 @@ const FooterStyles = theme => (
         zIndex: 4,
         display: 'flex',
         flexDirection: 'column',
+        backgroundColor: 'rgb(241, 242, 250)',
       },
   }
 )
