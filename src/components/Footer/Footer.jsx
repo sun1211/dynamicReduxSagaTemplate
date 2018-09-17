@@ -2,10 +2,13 @@
 import React from 'react';
 
 import { withStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
-import { Divider } from '@material-ui/core';
-import image from "assets/images/wallet-logo.png";
+import Facebook from "assets/images/facebook.svg";
+import Github from "assets/images/github.svg";
+import Medium from "assets/images/medium.svg";
+import Telegram from "assets/images/telegram.svg";
+import Twitter from "assets/images/twitter.svg";
+
 
 //style using in Footer
 
@@ -31,37 +34,12 @@ function Footer(props) {
   return (
     <footer className={classes.footer}>
     <div>
-      <Divider/>
-      <Grid container spacing={30}>
-        <Grid item xs={4}>
-          <Typography >
-            Email Support:
-            <a href="https://mail.google.com/">support@eosgui.com </a>
-            <br />
-            EOS is free & open source:
-            <a href="https://github.com/"> GitHub</a>
-          </Typography>
-        </Grid>
-
-        <Grid item xs={4}>
-          <Typography align="center">
-            Donations are alway appreciated! <br />
-            EOSAccount: 123esogui123.<br />
-            © 2018 EOSgui, Inc
-          </Typography>
-
-        </Grid>
-
-        <Grid item xs={4} container direction="row" justify="flex-end" alignItems="center">
-          <img height="30" width="30" href="https://facebook.com/" src={image} className={classes.icon}></img>
-          <img height="30" width="30" href="https://youtube.com/" src={image}  className={classes.icon}></img>
-          <img height="30" width="30" href="https://twitter.com/" src={image} className={classes.icon}></img>
-          <img height="30" width="30" href="https://github.com/" src={image} className={classes.icon}></img>
-          <div>
-          <img height="70" width="70" href="https://eosgui.com/" src={image} className={classes.icon}></img>
-          </div>
-        </Grid>
-
+      <Grid container spacing={30} direction="row"  justify="center" alignItems="center">
+      <img height="70" width="70" href="https://eosgui.com/" src={Facebook} className={classes.icon}></img>
+      <img height="70" width="70" href="https://eosgui.com/" src={Github} className={classes.icon}></img>
+      <img height="70" width="70" href="https://eosgui.com/" src={Medium} className={classes.icon}></img>
+      <img height="70" width="70" href="https://eosgui.com/" src={Telegram} className={classes.icon}></img>
+      <img height="70" width="70" href="https://eosgui.com/" src={Twitter} className={classes.icon}></img>
       </Grid>
     </div>
     </footer>
