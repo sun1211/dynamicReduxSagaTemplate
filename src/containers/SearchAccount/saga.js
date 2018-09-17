@@ -27,22 +27,26 @@ const networkOptions = {
 
 const tokensUrl = 'https://raw.githubusercontent.com/eoscafe/eos-airdrops/master/tokens.json';
 
-function* fetchTokenInfo(reader, account, symbol) {
+function* fetchTokenInfo(reader, account, symbol, logo_path) {
   try {
     if (symbol === 'OCT') throw { message: 'OCT has no STATS table - please fix!' };
     const stats = yield reader.getCurrencyStats(account, symbol);
+    console.log("Tam_ ", stats);
     const precision = stats[symbol].max_supply.split(' ')[0].split('.')[1].length;
-    console.log("tam_ precision", precision);
+    // const logo_path = stats[symbol].
+    // console.log("tam_ precision", precision);
     return {
       account,
       symbol,
       precision,
+      logo_path,
     };
   } catch (c) {
     return {
       account,
       symbol,
       precision: 4,
+      logo_path,
     };
   }
 }
@@ -51,18 +55,21 @@ function* fetchTokens(reader) {
   try {
     const data = yield fetch(tokensUrl);
     const list = yield data.json();
+    console.log("tam_ listt", list);
 
     const tokenList = [
       {
         symbol: "EOS",
-        account: "eosio.token"
+        account: "eosio.token",
+        logo_lg: ""
       },
       ...list
     ]
     console.log("tam_ tokenList", tokenList);
     const info = yield all(
+
       tokenList.map(token => {
-        return fork(fetchTokenInfo, reader, token.account, token.symbol);
+        return fork(fetchTokenInfo, reader, token.account, token.symbol, token.logo_lg);
       })
     );
     const tokens = yield join(...info);
@@ -74,14 +81,16 @@ function* fetchTokens(reader) {
     return null;
   }
 }
-function* getCurrency(token, name) {
+function* getCurrency(token, name, icon_path) {
   try {
     const networkReader = yield Eos(networkOptions);
     const currency = yield networkReader.getCurrencyBalance(token, name);
+    console.log("tam_ currency", currency);
     const currencies = currency.map(c => {
       return {
         account: token,
         balance: c,
+        iconPath: icon_path
       };
     });
     // console.log("tam__getCurrency", currencies);
@@ -127,9 +136,11 @@ function* getToken(name){
 
   const eosTokens = yield call(fetchTokens, networkReader);
 
+  console.log("tam_ eosTokens", eosTokens);
+
   const tokens = yield all(
     eosTokens.map(token => {
-      return fork(getCurrency, token.account, name);
+      return fork(getCurrency, token.account, name, token.logo_path);
     })
   );
   const currencies = yield join(...tokens);
