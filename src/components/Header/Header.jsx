@@ -5,10 +5,8 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 
-import SearchBar from "components/SearchBar/SearchBar.jsx";
 import Avatar from '@material-ui/core/Avatar';
 import WalletLogo from "assets/images/wallet-logo.png";
-import CustomDropdown from 'components/CustomDropdown/CustomDropdown.jsx'
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 
@@ -72,18 +70,18 @@ class Header extends React.Component {
     this.setState({ value });
   };
 
-  handleMenu = event => {
-    this.setState({ anchorEl: event.currentTarget });
-  };
+  // handleMenu = event => {
+  //   this.setState({ anchorEl: event.currentTarget });
+  // };
 
-  handleClose = () => {
-    this.setState({ anchorEl: null });
-  };
+  // handleClose = () => {
+  //   this.setState({ anchorEl: null });
+  // };
 
   render() {
     const { value } = this.state;
-    const { anchorEl } = this.state;
-    const open = Boolean(anchorEl);
+    // const { anchorEl } = this.state;
+    // const open = Boolean(anchorEl);
     const {
       classes,
       accountInfoTab,

@@ -2,24 +2,12 @@ import React from "react";
 // @material-ui/core components
 import withStyles from "@material-ui/core/styles/withStyles";
 import InputAdornment from "@material-ui/core/InputAdornment";
-// @material-ui/icons
-import Email from "@material-ui/icons/Email";
-import People from "@material-ui/icons/People";
 // core components
-import Footer from "components/Footer/Footer.jsx";
-import Button from '@material-ui/core/Button';
-import CustomInput from '@material-ui/core/Input';
 import Typography from '@material-ui/core/Typography';
-import SearchBar from "components/SearchBar/SearchBar.jsx";
 import classNames from 'classnames';
-import PropTypes from 'prop-types';
 import IconButton from '@material-ui/core/IconButton';
 import Input from '@material-ui/core/Input';
-import InputLabel from '@material-ui/core/InputLabel';
-import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
-import TextField from '@material-ui/core/TextField';
-import MenuItem from '@material-ui/core/MenuItem';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import AccountCircle from '@material-ui/icons/AccountCircle';
@@ -50,7 +38,7 @@ class SectionAccount extends React.Component {
   };
 
   render() {
-    const { classes, ...rest } = this.props;
+    const { classes} = this.props;
     return (
       <div className={classes.root}>
         <div className={classes.container}>

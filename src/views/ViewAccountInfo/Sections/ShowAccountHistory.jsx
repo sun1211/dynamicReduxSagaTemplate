@@ -6,15 +6,6 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Button from '@material-ui/core/Button';
-import Card from '@material-ui/core/Card';
-import CardHeader from '@material-ui/core/CardHeader';
-import CardMedia from '@material-ui/core/CardMedia';
-import CardContent from '@material-ui/core/CardContent';
-import CardActions from '@material-ui/core/CardActions';
-
-
-import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
-
 
 const styles = theme => ({
   root: {
@@ -81,7 +72,7 @@ const ShowAccountHistory = props => {
                         <TableCell className={classes.tableCell}>
                           <Button size="small" variant="outlined" color="primary">Transfer</Button>
                         </TableCell>
-                        <TableCell className={classes.tableCell}>{p.action_trace.act.data.from} â†’ {p.action_trace.act.data.to} : {p.action_trace.act.data.quantity}</TableCell>
+                        <TableCell className={classes.tableCell}>{p.action_trace.act.data.from} â†? {p.action_trace.act.data.to} : {p.action_trace.act.data.quantity}</TableCell>
                         <TableCell className={classes.tableCell}>{p.action_trace.act.data.memo.substring(0, 50)}</TableCell>
                       </TableRow >
                     );
@@ -118,6 +109,8 @@ const ShowAccountHistory = props => {
                         <TableCell >{""}</TableCell>
                       </TableRow>
                     );
+                    default:
+                    return("");
 
                 }
 

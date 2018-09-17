@@ -1,6 +1,6 @@
 import { takeLatest, call, put, select, all, fork, join } from 'redux-saga/effects';
-import { makeSelectSearchName, makeSelectSearchPubkey } from './selectors';
-import { LOOKUP_ACCOUNT, LOOKUP_PUBKEY } from './constants';
+import { makeSelectSearchName } from './selectors';
+import { LOOKUP_ACCOUNT } from './constants';
 import { lookupLoading, lookupLoaded } from './actions';
 import Eos from 'eosjs';
 // import {tokensUrl} from '../../remoteConfig'
@@ -126,7 +126,6 @@ function* getToken(name){
   const networkReader = yield Eos(networkOptions);
 
   const eosTokens = yield call(fetchTokens, networkReader);
-  console.log("tam_ tokens", tokens);
 
   const tokens = yield all(
     eosTokens.map(token => {

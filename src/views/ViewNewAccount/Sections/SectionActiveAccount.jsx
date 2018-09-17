@@ -2,33 +2,18 @@ import React from "react";
 // @material-ui/core components
 import withStyles from "@material-ui/core/styles/withStyles";
 import InputAdornment from "@material-ui/core/InputAdornment";
-// @material-ui/icons
-import Email from "@material-ui/icons/Email";
-import People from "@material-ui/icons/People";
 // core components
-import Footer from "components/Footer/Footer.jsx";
 import Button from '@material-ui/core/Button';
 
 //import CustomInput from "components/CustomInput/CustomInput.jsx";
-import CustomInput from '@material-ui/core/Input';
 import Typography from '@material-ui/core/Typography';
-import SearchBar from "components/SearchBar/SearchBar.jsx";
-import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import IconButton from '@material-ui/core/IconButton';
-import Input from '@material-ui/core/Input';
-import InputLabel from '@material-ui/core/InputLabel';
-import FormHelperText from '@material-ui/core/FormHelperText';
+
 import FormControl from '@material-ui/core/FormControl';
 import TextField from '@material-ui/core/TextField';
-import MenuItem from '@material-ui/core/MenuItem';
-import Add from '@material-ui/icons/Add';
-import VisibilityOff from '@material-ui/icons/VisibilityOff';
-import Copyright from '@material-ui/icons/Copyright';
 import SaveIcon from '@material-ui/icons/Save';
-import Icon from '@material-ui/core/Icon';
 import Check from '@material-ui/icons/Check';
-import CloudDownload from '@material-ui/icons/CloudDownload';
 import styleSectionAccount from "views/ViewNewAccount/Sections/styleSectionAccount.jsx";
 
 
@@ -48,7 +33,7 @@ class SectionActiveAccount extends React.Component {
   };
 
   render() {
-    const { classes, ...rest } = this.props;
+    const { classes} = this.props;
     return (
       <div className={classes.root}>
         <div className={classes.container}>

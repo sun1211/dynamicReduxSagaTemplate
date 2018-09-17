@@ -2,11 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import FormLabel from '@material-ui/core/FormLabel';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import RadioGroup from '@material-ui/core/RadioGroup';
-import Radio from '@material-ui/core/Radio';
-import Paper from '@material-ui/core/Paper';
 
 import SearchAccountBar from 'views/ViewAccountInfo/Sections/SearchAccountBar'
 import ShowAccountInforForm from "views/ViewAccountInfo/Sections/ShowAccountInforForm"
@@ -44,13 +39,8 @@ class ViewAccountInfo extends React.Component {
   };
 
   render() {
-    const { spacing } = this.state;
     const {
       classes,  
-      accountInfoTab,
-      newAccountTab,
-      transferTokenTab,
-      contractTab,
     } = this.props;
     return (
 
@@ -95,12 +85,5 @@ class ViewAccountInfo extends React.Component {
 ViewAccountInfo.propTypes = {
   classes: PropTypes.object.isRequired,
 };
-
-// ViewAccountInfo.propTypes = {
-//   accounts,
-//   historys,
-//   tokenBalances,
-//   loading,
-// };
 
 export default withStyles(styles)(ViewAccountInfo);

@@ -4,11 +4,8 @@ import { Router, Switch } from 'react-router-dom';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
 import Header from 'components/Header/Header'
-import ViewButtonNavigation from 'views/ViewButtonNavigation.jsx'
-import ViewAccountInfo from 'views/ViewAccountInfo/ViewAccountInfo.jsx'
 import ViewNewAccount from 'views/ViewNewAccount/ViewNewAccount.jsx'
 import ViewTransferToken from 'views/ViewTransferToken/ViewTransferToken.jsx'
-import ViewContract from 'views/ViewContract/ViewContract.jsx'
 import Footer from 'components/Footer/Footer.jsx'
 import AccountInfo from 'containers/SearchAccount/index.js'
 

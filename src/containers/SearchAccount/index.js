@@ -13,7 +13,7 @@ import injectSaga from 'utils/injectSaga';
 import injectReducer from 'utils/injectReducer';
 import reducer from './reducer';
 import saga from './saga';
-import { lookupAccount, lookupPubkey } from './actions';
+import { lookupAccount } from './actions';
 import { makeSelectSearchAccounts, makeSelectSearchLoading, makeSelectSearchHistory, makeSelectSearchTokenBalance } from './selectors';
 
 import ViewAccountInfo from 'views/ViewAccountInfo/ViewAccountInfo.jsx'
