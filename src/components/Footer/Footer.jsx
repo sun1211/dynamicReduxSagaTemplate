@@ -36,11 +36,11 @@ function Footer(props) {
     <footer className={classes.footer}>
     <div>
       <Grid container spacing={30} direction="row"  justify="center" alignItems="center">
-      <img height="70" width="70" href="https://eosgui.com/" src={Facebook} className={classes.icon}></img>
-      <img height="70" width="70" href="https://eosgui.com/" src={Github} className={classes.icon}></img>
-      <img height="70" width="70" href="https://eosgui.com/" src={Medium} className={classes.icon}></img>
-      <img height="70" width="70" href="https://eosgui.com/" src={Telegram} className={classes.icon}></img>
-      <img height="70" width="70" href="https://eosgui.com/" src={Twitter} className={classes.icon}></img>
+      <a href="https://facebook.com/" ><img alt="FB" height="70" width="70" src={Facebook} className={classes.icon}></img></a>
+      <a href="https://github.com/" ><img alt="FB" height="70" width="70" src={Github} className={classes.icon}></img></a>
+      <a href="https://medium.com/" ><img alt="FB" height="70" width="70" src={Medium} className={classes.icon}></img></a>
+      <a href="https://telegram.org/" ><img alt="FB" height="70" width="70" src={Telegram} className={classes.icon}></img></a>
+      <a href="https://twitter.com/" ><img alt="FB" height="70" width="70" src={Twitter} className={classes.icon}></img></a>
       </Grid>
     </div>
     </footer>
