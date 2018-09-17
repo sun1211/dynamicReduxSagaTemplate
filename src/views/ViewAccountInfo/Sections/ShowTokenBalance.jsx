@@ -60,7 +60,9 @@ const ShowTokenBalace = props => {
                                     return <List>
                                         <ListItem className={classes.tokenList}>
                                             <Avatar>
-                                                <ImageIcon />
+                                                {/* <ImageIcon /> */}
+                                                <img height="40" width="40" src ={tokenBalance[key].iconPath} />
+                                                {console.log(tokenBalance[key].iconPath)}
                                             </Avatar>
                                             <ListItemText className={classes.tokenName}
                                                 primary={tokenBalance[key].account}

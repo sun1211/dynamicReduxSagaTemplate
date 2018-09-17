@@ -61,7 +61,7 @@ function* fetchTokens(reader) {
       {
         symbol: "EOS",
         account: "eosio.token",
-        logo_lg: ""
+        logo_lg: "https://compra-bitcoins.com/wp-content/uploads/2018/07/eos.png"
       },
       ...list
     ]

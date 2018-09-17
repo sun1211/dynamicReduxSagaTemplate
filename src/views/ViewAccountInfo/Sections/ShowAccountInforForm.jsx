@@ -54,7 +54,7 @@ class ShowAccountInforForm extends React.Component {
                 <Card className={this.props.classes.card}>
                     <CardHeader
                         className={this.props.classes.cardHeader}
-                        title={this.props.account.account_name}
+                        title={"Account: " + this.props.account.account_name}
                         titleTypographyProps={{
                             variant: 'title',
                             color: 'inherit',

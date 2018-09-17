@@ -72,7 +72,7 @@ const ShowAccountHistory = props => {
                         <TableCell className={classes.tableCell}>
                           <Button size="small" variant="outlined" color="primary">Transfer</Button>
                         </TableCell>
-                        <TableCell className={classes.tableCell}>{p.action_trace.act.data.from} â†? {p.action_trace.act.data.to} : {p.action_trace.act.data.quantity}</TableCell>
+                        <TableCell className={classes.tableCell}>{p.action_trace.act.data.from} â†’ {p.action_trace.act.data.to} : {p.action_trace.act.data.quantity}</TableCell>
                         <TableCell className={classes.tableCell}>{p.action_trace.act.data.memo.substring(0, 50)}</TableCell>
                       </TableRow >
                     );
