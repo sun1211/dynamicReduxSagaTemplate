@@ -19,6 +19,7 @@ const initialState = fromJS({
 function SearchAccountReducer(state = initialState, action) {
   switch (action.type) {
     case LOOKUP_ACCOUNT:
+    console.log("tam LOOKUP_ACCOUNT");
       return state.set('name', action.name);
     case LOOKUP_PUBKEY:
       return state.set('pubkey', action.pubkey);

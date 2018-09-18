@@ -9,6 +9,7 @@ import ViewTransferToken from 'views/ViewTransferToken/ViewTransferToken.jsx'
 import Footer from 'components/Footer/Footer.jsx'
 import AccountInfo from 'containers/SearchAccount/index.js'
 
+import NetworkClient from 'containers/NetworkClient/index.js'
 
 const hist = createBrowserHistory();
 const theme = createMuiTheme({
@@ -47,6 +48,7 @@ export default function App() {
           //contractTab={<TokenCard />}
           />
           {/* <ViewAccountInfo /> */}
+          <NetworkClient/>
           <Footer />
         </MuiThemeProvider>
       </Switch>

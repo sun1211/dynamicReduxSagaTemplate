@@ -159,7 +159,7 @@ function* getToken(name){
 // Get the EOS single account
 //
 function* performSearchAccount() {
-  // console.log("tam_ performSearchAccount");
+  console.log("tam_ performSearchAccount");
 
   // const accountName = 'starteosiobp';
   const accountName = yield select(makeSelectSearchName());
