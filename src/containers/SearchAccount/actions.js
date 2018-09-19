@@ -7,6 +7,7 @@
 import { DEFAULT_ACTION, LOOKUP_ACCOUNT, LOOKUP_PUBKEY, LOOKUP_LOADING, LOOKUP_LOADED , LOOKUP_LOADED_ACCOUNT, LOOKUP_LOADED_TOKEN, LOOKUP_LOADED_HISTORY} from './constants';
 
 export function lookupAccount(name) {
+  console.log("tam LOOKUP_ACCOUNT A");
   return {
     type: LOOKUP_ACCOUNT,
     name,

@@ -159,6 +159,7 @@ function* getToken(name){
 // Get the EOS single account
 //
 function* performSearchAccount() {
+  console.log("tam LOOKUP_ACCOUNT B");
   console.log("tam_ performSearchAccount");
 
   // const accountName = 'starteosiobp';
