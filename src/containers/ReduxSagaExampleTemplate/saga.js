@@ -102,18 +102,20 @@ function* doWatchDynamic() {
   const actions = transaction.map(tx => {
     return {
       ...tx,
-      authorization: [{ actor: 'demdemdemdem', permission: 'active' }],
+      authorization: [{ actor: identity.name, permission: identity.authority }],
     };
   });
   console.log("tam_ actions", actions);
+  //============================networkReader==========================================
+  const networkReader = yield Eos(networkReaderOption);
+  console.log("tam _ networkReader", networkReader);
+
   //===========================networkWriter===========================================
   const networkWriter = ScatterJS.scatter.eos(signerClientConfig, Eos, networkOptions, protocol);
   console.log("tam _ networkWriter", networkWriter);
 
 
-  //============================networkReader==========================================
-  const networkReader = yield Eos(networkReaderOption);
-  console.log("tam _ networkReader", networkReader);
+
 
   //======================================================================
 
@@ -121,7 +123,13 @@ function* doWatchDynamic() {
 
   console.log("tam _ res", res, res.transaction_id);
 
+  //======================================================================
+  // const transactionOptions = { authorization:[`${identity.name}@${identity.authority}`] };
+  // console.log("Attempting to send tx to scatter:", transactionOptions);
 
+  // networkWriter.transfer(identity.name, 'tamtamtamtam', '1.0000 EOS', 'test demo 2 lan', transactionOptions).then(trx => {
+  //   console.log(`Transaction ID: ${trx.transaction_id}`);
+  // });
 
 
 
