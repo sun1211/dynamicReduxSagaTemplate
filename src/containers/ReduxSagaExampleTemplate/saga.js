@@ -33,6 +33,71 @@ const networkReaderOption = {
   chainId: '038f4b0fc8ff18a4f0842a8f0564611f6e96e8535901dd45e43ac8691a1c4dca',
   httpEndpoint: 'https://api.eosdetroit.io:443',
 };
+const tokensUrl = 'https://raw.githubusercontent.com/eoscafe/eos-airdrops/master/tokens.json';
+
+function* fetchTokenInfo(reader, account, symbol) {
+  try {
+    if (symbol === 'OCT') throw { message: 'OCT has no STATS table - please fix!' };
+    const stats = yield reader.getCurrencyStats(account, symbol);
+    const precision = stats[symbol].max_supply.split(' ')[0].split('.')[1].length;
+    return {
+      account,
+      symbol,
+      precision,
+    };
+  } catch (c) {
+    return {
+      account,
+      symbol,
+      precision: 4,
+    };
+  }
+}
+
+function* fetchTokens(reader) {
+  try {
+    const data = yield fetch(tokensUrl);
+    const list = yield data.json();
+
+    const tokenList = [
+      {
+        symbol: "EOS",
+        account: "eosio.token"
+      },
+      ...list
+    ]
+    const info = yield all(
+      tokenList.map(token => {
+        return fork(fetchTokenInfo, reader, token.account, token.symbol);
+      })
+    );
+    const tokens = yield join(...info);
+    return tokens;
+  } catch (err) {
+    console.error('An EOSToolkit error occured - see details below:');
+    console.error(err);
+    return null;
+  }
+}
+
+const makeTransaction = (values, eosTokens) => {
+  const token = eosTokens.find(tk => tk.symbol === values.symbol);
+  const transaction = [
+    {
+      account: token.account,
+      name: 'transfer',
+      data: {
+        from: values.owner,
+        to: values.name,
+        memo: values.memo,
+        quantity: `${Number(values.quantity)
+          .toFixed(token.precision)
+          .toString()} ${values.symbol}`,
+      },
+    },
+  ];
+  return transaction;
+};
 
 
 function* fetchIdentity(signer) {
@@ -86,19 +151,38 @@ function* doWatchDynamic() {
   const identity = yield call(fetchIdentity, signer);
   console.log("tam _ identity", identity);
 
+  //============================networkReader==========================================
+  const networkReader = yield Eos(networkReaderOption);
+  console.log("tam _ networkReader", networkReader);
+
   //======================transaction==================================
-  const transaction = [
+  const eosTokens = yield call(fetchTokens, networkReader);
+  console.log("tam_ eosTokens", eosTokens);
+
+  const valueForm = 
     {
-      account: 'eosio.token',
-      name: 'transfer',
-      data: {
-        from: 'demdemdemdem',
-        to: 'tamtamtamtam',
-        memo: 'new demo tamtamtmatm',
-        quantity: '1.0000 EOS',
-      },
-    },
-  ];
+      memo: "_____________",
+      name: "tamtamtamtam",
+      owner: "demdemdemdem",
+      quantity: "1",
+      symbol: "EOS",
+    };
+
+  const transaction = makeTransaction(valueForm, eosTokens);
+  console.log("tam_ transaction ", transaction);
+
+  // const transaction = [
+  //   {
+  //     account: 'eosio.token',
+  //     name: 'transfer',
+  //     data: {
+  //       from: 'demdemdemdem',
+  //       to: 'tamtamtamtam',
+  //       memo: 'new demo tamtamtmatm',
+  //       quantity: '1.0000 EOS',
+  //     },
+  //   },
+  // ];
   const actions = transaction.map(tx => {
     return {
       ...tx,
@@ -106,9 +190,7 @@ function* doWatchDynamic() {
     };
   });
   console.log("tam_ actions", actions);
-  //============================networkReader==========================================
-  const networkReader = yield Eos(networkReaderOption);
-  console.log("tam _ networkReader", networkReader);
+
 
   //===========================networkWriter===========================================
   const networkWriter = ScatterJS.scatter.eos(signerClientConfig, Eos, networkOptions, protocol);
@@ -117,7 +199,18 @@ function* doWatchDynamic() {
 
 
 
+
   //======================================================================
+
+  if (!networkWriter || !transaction || !identity) {
+    throw { message: 'Writing is not enabled - check your Scatter connection' };
+  }
+  if (transaction.error) {
+    throw { message: transaction.error };
+  }
+  if (transaction.success) {
+    throw { message: transaction.success };
+  }
 
   const res = yield networkWriter.transaction({ actions });
 
