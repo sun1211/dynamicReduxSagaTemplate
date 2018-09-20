@@ -1,26 +1,23 @@
 import { fromJS } from 'immutable';
-import { DEFAULT, LOAD_ACCOUNT, LOAD_HISTORY} from './constants';
+import { DEFAULT, LOAD_ACCOUNT, LOAD_HISTORY} from './constant';
 
 const initialState = fromJS({
   name: '',
-  pubkey: '',
-  loading: false,
-  accounts: [],
+  account: [],
   history: [],
-  tokenBalance:[],
 });
 
 function DynamicReducer(state = initialState, action) {
     switch (action.type) {
       case DEFAULT:
-      console.log("tam LOOKUP_ACCOUNT");
+      console.log("tam DynamicReducer DEFAULT");
         return state.set('name', action.name);
       case LOAD_ACCOUNT:
-        return state.set('pubkey', action.pubkey);
+      console.log("tam DynamicReducer LOAD_ACCOUNT", action.account);
+        return state.set('account', action.account);
       case LOAD_HISTORY:
-        return state.set('loading', true);
-
-
+      console.log("tam DynamicReducer LOAD_HISTORY");
+        return state.set('history', action.history);
       default:
         return state;
     }

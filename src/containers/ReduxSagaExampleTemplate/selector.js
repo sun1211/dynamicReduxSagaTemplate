@@ -5,13 +5,13 @@ import { createSelector } from 'reselect';
  */
 const selectDynamic = state => state.get('DynamicTemplate');
 
-const makeSelectLoadAccount = () => createSelector(selectDomain, substate => substate.get('account'));
+const makeSelectLoadAccount = () => createSelector(selectDynamic, substate => substate.get('account'));
 
-const makeSelectLoadHistory = () => createSelector(selectDomain, substate => substate.get('history'));
+const makeSelectLoadHistory = () => createSelector(selectDynamic, substate => substate.get('history'));
 
 
 
-export default makeSelectDynamicTemplate;
+export default makeSelectLoadAccount;
 export {
     selectDynamic,
     makeSelectLoadAccount,

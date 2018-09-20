@@ -9,6 +9,8 @@ import ViewTransferToken from 'views/ViewTransferToken/ViewTransferToken.jsx'
 import Footer from 'components/Footer/Footer.jsx'
 import AccountInfo from 'containers/SearchAccount/index.js'
 
+import DynamicTestForm from 'containers/ReduxSagaExampleTemplate/index.js'
+
 const hist = createBrowserHistory();
 const theme = createMuiTheme({
   palette: {
@@ -45,6 +47,7 @@ export default function App() {
             transferTokenTab={<ViewTransferToken />}
           //contractTab={<TokenCard />}
           />
+          <DynamicTestForm/>
           <Footer />
         </MuiThemeProvider>
       </Switch>
