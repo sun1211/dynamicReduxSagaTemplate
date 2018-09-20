@@ -9,29 +9,29 @@ import Eos from 'eosjs';
 const signerClientConfig = {
   protocol: 'https',
   blockchain: 'eos',
-  host: 'api.eosdetroit.io',
+  host: 'nodes.get-scatter.com',
   port: '443',
-  chainId: '038f4b0fc8ff18a4f0842a8f0564611f6e96e8535901dd45e43ac8691a1c4dca',
+  chainId: 'aca376f206b8fc25a6ed44dbdc66547c36c6c33e3a119ffbeaef943642f0e906',
 };
 const networkOptions = {
   broadcast: true,
   sign: true,
-  chainId: '038f4b0fc8ff18a4f0842a8f0564611f6e96e8535901dd45e43ac8691a1c4dca',
+  chainId: 'aca376f206b8fc25a6ed44dbdc66547c36c6c33e3a119ffbeaef943642f0e906',
 };
 const protocol = 'https';
 
 const networkConfig = {
   protocol: 'https',
   blockchain: 'eos',
-  host: 'api.eosdetroit.io',
+  host: 'nodes.get-scatter.com',
   port: '443',
-  chainId: '038f4b0fc8ff18a4f0842a8f0564611f6e96e8535901dd45e43ac8691a1c4dca',
+  chainId: 'aca376f206b8fc25a6ed44dbdc66547c36c6c33e3a119ffbeaef943642f0e906',
 };
 const networkReaderOption = {
   broadcast: false,
   sign: false,
   chainId: '038f4b0fc8ff18a4f0842a8f0564611f6e96e8535901dd45e43ac8691a1c4dca',
-  httpEndpoint: 'https://api.eosdetroit.io:443',
+  httpEndpoint: 'https://nodes.get-scatter.com:443',
 };
 const tokensUrl = 'https://raw.githubusercontent.com/eoscafe/eos-airdrops/master/tokens.json';
 
@@ -116,7 +116,7 @@ function* fetchIdentity(signer) {
     const id = yield signer.getIdentity({
       accounts: [
         {
-          chainId: '038f4b0fc8ff18a4f0842a8f0564611f6e96e8535901dd45e43ac8691a1c4dca',
+          chainId: 'aca376f206b8fc25a6ed44dbdc66547c36c6c33e3a119ffbeaef943642f0e906',
           blockchain: 'eos',
         },
       ],
@@ -162,9 +162,9 @@ function* doWatchDynamic() {
   const valueForm = 
     {
       memo: "_____________",
-      name: "tamtamtamtam",
-      owner: "demdemdemdem",
-      quantity: "1",
+      name: "123eosgui123",
+      owner: "hoangngoctam",
+      quantity: "0.001",
       symbol: "EOS",
     };
 
